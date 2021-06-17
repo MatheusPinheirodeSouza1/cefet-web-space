@@ -48,3 +48,23 @@ const imagens = [
     }
   ];
 
+const anterior = document.querySelector('#anterior');
+const proximo = document.querySelector('#proximo');
+const slide = document.querySelector('#slide');
+let index = 0;
+
+anterior.addEventListener('click', () => {
+  index = ((imagens.length + index) - 1) % imagens.length;
+  const imagemAtual = imagens[index];
+
+  slide.src = `${servidorDasImagens}/${imagemAtual.arquivo}`;
+  slide.alt = imagemAtual.descricao;
+});
+
+proximo.addEventListener('click', () => {
+  index = Math.abs((index + 1) % imagens.length);
+  const imagemAtual = imagens[index];
+
+  slide.src = `${servidorDasImagens}/${imagemAtual.arquivo}`;
+  slide.alt = imagemAtual.descricao;
+});
